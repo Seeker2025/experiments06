@@ -1,7 +1,3 @@
-console.log('Hello, world!');
-console.log('Hello, world!');
-
-
 const instruments = [
      {
   id: 1,
@@ -66,27 +62,4 @@ const instruments = [
 ];
 
 
-// console.log(instruments);
-
-const search = document.querySelector('.js-search');
-const list = document.querySelector('.js-list');
-console.log(search);
-console.log(list);
-
-function createMarkup(arr) {
-   const markup = arr.map(({ id, img, name}) => `<li class="border" data-id="${id}">
-        <img src="${img}" alt="${name}" width="200" >
-        <h2>${name}</h2>
-        <p>More information</p>
-        <div>
-<button>Add to favorite</button>
-<button>Add to basket</button>
-        </div>
-        </li>
-  
- <li>`).join('');
-   
-   list.innerHTML = markup;
-}  
-     
-createMarkup(instruments)
+console.log(instruments);

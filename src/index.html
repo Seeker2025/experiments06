@@ -4,12 +4,44 @@
     <meta charset="UTF-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
     <title>Page title</title>
-    <link rel="stylesheet" href="./sass/index.scss" />
+
+    <link rel="stylesheet" href="./css/common.css" />
+    <link rel="stylesheet" href="./css/listInstrument.css" />
+
     <script type="module" src="./index.js"></script>
   </head>
   <body>
-    <h1>Example title</h1>
-    <!-- ❗️❗️❗️ Add partials like so for every page -->
-    <include src="./partials/example.html"></include>
+    <ul>
+      <li><a href="./partials/forma.html">Forma</a></li>
+      <li><a href="./partials/expf01.html">expf01</a></li>
+    </ul>
+
+    <div>
+      <a href="#">Home</a>
+      <a href="./partials/favorite.html">Favorite</a>
+      <a href="./partials/checkout.html">Checkout</a>
+    </div>
+
+    <img
+      class=""
+      src="https://static.dnipro-m.ua/cache/products/2300/catalog_origin_326088.jpg"
+      width="300"
+      alt="logo"
+    />
+
+    <!-- <li>
+        <img src="" alt="">
+        <h2></h2>
+        <div>
+<button>Add to favorite</button>
+<button>Add to basket</button>
+        </div>
+      </li> -->
+
+    <input type="text" class="js-search" />
+
+    <ul class="js-list"></ul>
+
+    <!-- <script src="./js/list.js"></script> -->
   </body>
 </html>

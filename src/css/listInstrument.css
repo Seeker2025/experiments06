@@ -1,0 +1,6 @@
+.border{
+    border: 1px dashed black;
+    border-radius: 15px;
+    width: 250px;
+    padding: 15px;
+}
