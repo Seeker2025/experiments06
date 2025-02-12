@@ -4,7 +4,11 @@
 
 a {
   color: #f9f9f9;
-  text-decoration: none;
+  /* text-decoration: none; */
+}
+
+button{
+  padding: 10px 15px;
 }
 
 body {
@@ -12,7 +16,7 @@ body {
     Oxygen-Sans, Ubuntu, Cantarell, 'Helvetica Neue', sans-serif;
   -webkit-font-smoothing: antialiased;
   -moz-osx-font-smoothing: grayscale;
-  background-color: #6f7b6f;
+  background-color: #545454;
   color: #212121;
   line-height: 1.5;
   padding: 15px;
