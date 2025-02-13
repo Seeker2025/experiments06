@@ -59,7 +59,7 @@ function onClick(event) {
                <div>
 <button class="js-favorite">Add to favorite</button>
 <button class="js-basket">Add to basket</button>
-<div >Close</div>
+
                </div>
          </div>
 
