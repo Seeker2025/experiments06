@@ -8,9 +8,6 @@ import { instruments } from './js/inst';
 console.log(common);
 console.log(instruments);
 
-
-
-
 // console.log(instruments);
 
 const search = document.querySelector('.js-search');
@@ -41,7 +38,7 @@ list.addEventListener('click', onClick)
 
 function onClick(event) {
    event.preventDefault();
-   // console.log(event.target)
+   console.log(event.target)
    if (event.target.classList.contains('js-info')) {
       // const { id } = event.target.closest('.js-card').dataset;
       // console.log('This is id:', id);
@@ -49,10 +46,10 @@ function onClick(event) {
       const product = findProduct(event.target);
       // console.log(product);
       const { img, name, price, description } = product;
-// modalka
-      const instance = basicLightbox.create(`
+      // modalka
+      const markup = `
          <div class="box">
-               <img src="${img}" alt="${name}" width="400">
+               <img src="${img}" alt="${name}" width="300">
                <h2 class="boo">${name}</h2>
                <h3>${price} грн</h3>
                <p>${description}</p>
@@ -63,21 +60,36 @@ function onClick(event) {
                </div>
          </div>
 
-         `);
-      instance.show();
+         `
+         basicLightbox.create(markup, {
+         onShow: (instance) => {
+            instance.element().querySelector('.js-favorite').onclick = (e) => {
+               console.log(e.target)
+            }
+
+            instance.element().querySelector('.js-basket').onclick = (e) => {
+               console.log(e.target)
+            }
+         }
+      }).show();
    }
 
-   if (event.target.classList.contains('js-favorite')) {
-     console.log('dddds');
-     console.log(event.target);
+   // if (event.target.classList.contains('box')) {
+   //   console.log('dddds');
+   //   console.log(event.target);
+   // }
 
-   }
-   if (event.target.classList.contains('js-basket')) {
-      console.log(event.target);
-      const product = findProduct(event.target);
-      basketArr.push(product);
-      localStorage.setItem(KEY_BASKET, JSON.stringify(basketArr));
-   }
+   //  if (event.target.classList.contains('js-favorite')) {
+   //   console.log('tttyu');
+   //   console.log(event.target);
+   // }
+
+   // if (event.target.classList.contains('js-basket')) {
+   //    console.log(event.target);
+   //    const product = findProduct(event.target);
+   //    basketArr.push(product);
+   //    localStorage.setItem(KEY_BASKET, JSON.stringify(basketArr));
+   // }
    
 } 
 createMarkup(instruments);
