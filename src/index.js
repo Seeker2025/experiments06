@@ -15,8 +15,8 @@ console.log(instruments);
 
 const search = document.querySelector('.js-search');
 const list = document.querySelector('.js-list');
-console.log(search);
-console.log(list);
+// console.log(search);
+// console.log(list);
 const favoriteArr = [];
 const basketArr = [];
 
@@ -25,7 +25,7 @@ function createMarkup(arr) {
    const markup = arr.map(({ id, img, name}) => `<li class="card js-card" data-id="${id}">
         <img src="${img}" alt="${name}" width="200" >
         <h2>${name}</h2>
-        <p class="class_info js-info"><a href="#" class="js-info">More information</a></p>
+      <p class="class_info"><a href="#" class="js-info">More information</a></p>
             <div>
 <button>Add to favorite</button>
 <button>Add to basket</button>
@@ -48,9 +48,9 @@ function onClick(event) {
       console.log(event.target)
       const product = findProduct(event.target);
       // console.log(product);
-      const{ img, name, price, description } = product;
+      const { img, name, price, description } = product;
+// modalka
       const instance = basicLightbox.create(`
-
          <div class="box">
                <img src="${img}" alt="${name}" width="400">
                <h2 class="boo">${name}</h2>
@@ -66,12 +66,10 @@ function onClick(event) {
          `);
       instance.show();
    }
-//    const dddds= document.querySelector('.js-favorite');
-// const ddddddsds = document.querySelector('.js-basket');
-// console.log(dddds);
-   // console.log(ddddddsds);
-   if (event.target.classList.contains('boo')) {
+
+   if (event.target.classList.contains('js-favorite')) {
      console.log('dddds');
+     console.log(event.target);
 
    }
    if (event.target.classList.contains('js-basket')) {
@@ -80,7 +78,7 @@ function onClick(event) {
       basketArr.push(product);
       localStorage.setItem(KEY_BASKET, JSON.stringify(basketArr));
    }
-   console.log(event.currentTarget);
+   
 } 
 createMarkup(instruments);
 
