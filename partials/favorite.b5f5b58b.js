@@ -1,0 +1,2 @@
+!function(){var n=document.querySelector(".js-list");var a,c=JSON.parse(localStorage.getItem("favorite"));console.log(c),c&&(a=c.map((function(n){var a=n.id,c=n.img,o=n.name;return'\n         <li class="card js-card" data-id="'.concat(a,'">\n         <img src="').concat(c,'" alt="').concat(o,'" width="200" >\n         <h2>').concat(o,'</h2>\n         <p class="class_info"><a href="#" class="js-info">More information</a></p>\n         </li>\n  \n         ')})).join(""),n.innerHTML=a)}();
+//# sourceMappingURL=favorite.b5f5b58b.js.map
