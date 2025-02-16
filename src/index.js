@@ -3,52 +3,34 @@ import "basiclightbox/dist/basicLightbox.min.css";
 
 import { common } from './js/common';
 import { instruments } from './js/inst';
+import { createMarkup } from './js/markUp';
 
-// console.log('Hello, world!');
-console.log(common);
-console.log(instruments);
+createMarkup(instruments);
 
-// console.log(instruments);
+const { KEY_FAVORITE, KEY_BASKET } = common;
 
 const search = document.querySelector('.js-search');
 const list = document.querySelector('.js-list');
 // console.log(search);
 // console.log(list);
-const favoriteArr = [];
-const basketArr = [];
-
-
-function createMarkup(arr) {
-   const markup = arr.map(({ id, img, name}) => `<li class="card js-card" data-id="${id}">
-        <img src="${img}" alt="${name}" width="200" >
-        <h2>${name}</h2>
-      <p class="class_info"><a href="#" class="js-info">More information</a></p>
-            <div>
-<button>Add to favorite</button>
-<button>Add to basket</button>
-            </div>
-        </li>
-  
- <li>`).join('');
-   
-   list.innerHTML = markup;
-}  
+const favoriteArr = JSON.parse(localStorage.getItem(KEY_FAVORITE))??[];
+const basketArr = JSON.parse(localStorage.getItem(KEY_BASKET))??[];
 
 list.addEventListener('click', onClick)
 
 function onClick(event) {
    event.preventDefault();
-   console.log(event.target)
+   // console.log(event.target)
    if (event.target.classList.contains('js-info')) {
       // const { id } = event.target.closest('.js-card').dataset;
       // console.log('This is id:', id);
       console.log(event.target)
       const product = findProduct(event.target);
-      // console.log(product);
-      const { img, name, price, description } = product;
+      // console.log(product.id);
+      const { id, img, name, price, description } = product;
       // modalka
       const markup = `
-         <div class="box">
+         <li class="modal js-card" data-id="${id}">
                <img src="${img}" alt="${name}" width="300">
                <h2 class="boo">${name}</h2>
                <h3>${price} грн</h3>
@@ -56,51 +38,49 @@ function onClick(event) {
                <div>
 <button class="js-favorite">Add to favorite</button>
 <button class="js-basket">Add to basket</button>
-
                </div>
-         </div>
-
+         </li>
          `
          basicLightbox.create(markup, {
          onShow: (instance) => {
-            instance.element().querySelector('.js-favorite').onclick = (e) => {
-               console.log(e.target)
+            instance.element().querySelector('.js-favorite').onclick = (event) => {
+               // console.log(event.target);
+               const inStorage = favoriteArr.some(({ id }) => id === product.id);
+               if (inStorage) { 
+                  return;
+               }
+               console.log(inStorage)
+               favoriteArr.push(product);
+               localStorage.setItem(KEY_FAVORITE, JSON.stringify(favoriteArr));
+               console.log(favoriteArr);
             }
 
             instance.element().querySelector('.js-basket').onclick = (e) => {
-               console.log(e.target)
+               basketArr.push(product);
+               localStorage.setItem(KEY_BASKET, JSON.stringify(basketArr));
             }
          }
       }).show();
    }
-
-   // if (event.target.classList.contains('box')) {
-   //   console.log('dddds');
-   //   console.log(event.target);
-   // }
-
-   //  if (event.target.classList.contains('js-favorite')) {
-   //   console.log('tttyu');
-   //   console.log(event.target);
-   // }
-
-   // if (event.target.classList.contains('js-basket')) {
-   //    console.log(event.target);
-   //    const product = findProduct(event.target);
-   //    basketArr.push(product);
-   //    localStorage.setItem(KEY_BASKET, JSON.stringify(basketArr));
-   // }
-   
 } 
-createMarkup(instruments);
 
+// const el = document.querySelector('.js-card');
+// console.log(el.dataset.id);
 
- 
 function findProduct(elem) {
    const { id } = elem.closest('.js-card').dataset;
    const productId = Number(id);
    return instruments.find(({ id }) => id === productId);
 }
 
-console.log(favoriteArr);
+// const btnOne = document.querySelector('.js_btn_01');
+// console.log(btnOne);
+// console.log(btnOne.closest('.js-card').dataset.id);
+// const { id } = btnOne.closest('.js-card').dataset;
+// console.log(id);
+
+// console.log(findProduct(btnOne).id);
+
+// const allFavorites = JSON.parse(localStorage.getItem(KEY_FAVORITE));
+// console.log(allFavorites);
 

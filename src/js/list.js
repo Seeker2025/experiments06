@@ -11,7 +11,7 @@ const instruments = [
   img: "https://static.dnipro-m.ua/cache/products/10774/catalog_origin_486919.jpg",
   name: "Перфоратор",
   price: 3948,
-  description: "Перфоратор бочковий Dnipro-M BH-20 Використовується для свердління"
+  description: "Перфоратор бочковий Dnipro-M BH-20 Використовується для сверління"
     },
 
       {

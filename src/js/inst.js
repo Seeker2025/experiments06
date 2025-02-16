@@ -4,7 +4,7 @@ const instruments = [
      {
   id: 1,
   img: "https://static.dnipro-m.ua/cache/products/4878/catalog_origin_325618.jpg",
-  name: "Шуруповёрт",
+  name: "Шуруповерт",
   price: 1500,
   description: "Мережевий дриль-шуруповерт ТD-30-Надійний помічник для робіт по дому"
      },
@@ -13,7 +13,7 @@ const instruments = [
   img: "https://static.dnipro-m.ua/cache/products/10774/catalog_origin_486919.jpg",
   name: "Перфоратор",
   price: 3948,
-  description: "Перфоратор бочковий Dnipro-M BH-20 Використовується для свердління"
+  description: "Перфоратор бочковий Dnipro-M BH-20 Використовується для сверління"
     },
 
       {
