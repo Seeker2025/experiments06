@@ -1,2 +1,0 @@
-const n=document.querySelector(".js-list");const{KEY_FAVORITE:a}={KEY_FAVORITE:"favorite",KEY_BASKET:"basket"},s=JSON.parse(localStorage.getItem(a));console.log(s),s&&function(a){const s=a.map((({id:n,img:a,name:s})=>`\n         <li class="card js-card" data-id="${n}">\n         <img src="${a}" alt="${s}" width="200" >\n         <h2>${s}</h2>\n         <p class="class_info"><a href="#" class="js-info">More information</a></p>\n         </li>\n  \n         `)).join("");n.innerHTML=s}(s);
-//# sourceMappingURL=favorite.e5f464bb.js.map
