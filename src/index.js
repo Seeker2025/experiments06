@@ -5,12 +5,10 @@ import { common } from './js/common';
 import { instruments } from './js/inst';
 import { createMarkup } from './js/markUp';
 
-createMarkup(instruments);
-
-const { KEY_FAVORITE, KEY_BASKET } = common;
+const { KEY_FAVORITE, KEY_BASKET, list } = common;
+createMarkup(instruments, list);
 
 const search = document.querySelector('.js-search');
-const list = document.querySelector('.js-list');
 // console.log(search);
 // console.log(list);
 const favoriteArr = JSON.parse(localStorage.getItem(KEY_FAVORITE))??[];
