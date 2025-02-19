@@ -8,7 +8,7 @@
 .modal{
     background-color: rgb(67, 89, 156);
     border-radius: 15px;
-    width: 380px;
+    width: 420px;
     padding: 18px;
     margin: 5px;
     border: 8px dashed gold
@@ -34,4 +34,13 @@
     border-radius: 15px;
     /* width: 500px;
     height: 500px; */
+}
+
+.close{
+    font-style: normal;
+    cursor: pointer;
+    text-decoration: none;
+    position: absolute;
+    top: 20px;
+    right: 38px;
 }
