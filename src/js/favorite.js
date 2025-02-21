@@ -1,20 +1,23 @@
 import { common } from './common';
 import { createMarkup } from './markUp';
+// import { img } from '../img/logo.png';
 
-
-const { KEY_FAVORITE, list } = common;
+const { KEY_FAVORITE, KEY_BASKET, list } = common;
 
 const allFavorites = JSON.parse(localStorage.getItem(KEY_FAVORITE));
-console.log(allFavorites);
+console.log(!!(allFavorites));
+console.log(allFavorites.length);
 
-if (allFavorites) {
+if (allFavorites.length) {
     createMarkup(allFavorites, list);
 }
 else {
     const markup = `
     <li >
        <h2>There is nothing here</h2>
-       <img src="https://kurtrees.wordpress.com/wp-content/uploads/2013/04/black-and-white-empty-empty-heart-heart-favim-com-501667.jpg" alt="empty">
+              
+    </li>
     `
     list.innerHTML = markup;    
 }
+

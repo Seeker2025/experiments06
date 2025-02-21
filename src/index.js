@@ -5,20 +5,18 @@ import { common } from './js/common';
 import { instruments } from './js/inst';
 import { createMarkup } from './js/markUp';
 
-const { KEY_FAVORITE, KEY_BASKET, list } = common;
-const ESCAPE = 'Escape';
+export { onClick };
+
+const { KEY_FAVORITE, KEY_BASKET, ESCAPE, list } = common;
 createMarkup(instruments, list);
 
 const search = document.querySelector('.js-search');
 // console.log(search);
 // console.log(list);
-
-
 const favoriteArr = JSON.parse(localStorage.getItem(KEY_FAVORITE))??[];
 const basketArr = JSON.parse(localStorage.getItem(KEY_BASKET))??[];
 
 list.addEventListener('click', onClick);
-document.addEventListener('keydown', onClick);
 
 function onClick(event) {
    event.preventDefault();
@@ -37,12 +35,13 @@ function onClick(event) {
                <h2 class="boo">${name}</h2>
                <h3>${price} грн</h3>
                <p>${description}</p>
-               <div>
+               <p>id: <b>${id}</b></p>
+         <div>
 <button class="js-favorite">Add to favorite</button>
+<button class="js-remove">Remove from basket</button>
 <button class="js-basket">Add to basket</button>
-               </div>
+         </div>
             <i class="close js-close">&#10006</i> 
-            
          </li>
          `
          basicLightbox.create(markup, {
@@ -57,7 +56,23 @@ function onClick(event) {
                favoriteArr.push(product);
                localStorage.setItem(KEY_FAVORITE, JSON.stringify(favoriteArr));
                console.log(favoriteArr);
-            }
+               }
+////// remove item               
+               instance.element().querySelector('.js-remove').onclick = (event) => {
+                  console.log('remove');
+                  const listInstr = JSON.parse(localStorage.getItem(KEY_FAVORITE));
+                  console.log(listInstr);
+                  console.log(product.id);
+                  // listInstr.some(({ id }) => id === product.id);
+   if (listInstr) {
+      const newArr01 = listInstr.filter(({ id }) => id !== product.id);
+      console.log(newArr01);
+      localStorage.setItem(KEY_FAVORITE, JSON.stringify(newArr01));
+   }
+                  else {
+                     console.log('no');
+                  }
+               }
 
             instance.element().querySelector('.js-basket').onclick = (e) => {
                basketArr.push(product);
@@ -67,17 +82,19 @@ function onClick(event) {
                console.log('close');
                instance.close();
                }   
+                   
+            },
+            onClose: (instance) => {
             
-                       
-         }
+            }
         
       }).show();
    }
 } 
 
-const el = document.querySelector('.js-card');
-console.log(el.dataset.id);
-console.log(el);
+// const el = document.querySelector('.js-card');
+// console.log(el.dataset.id);
+// console.log(el);
 
 function findProduct(elem) {
    const { id } = elem.closest('.js-card').dataset;
@@ -85,11 +102,13 @@ function findProduct(elem) {
    return instruments.find(({ id }) => id === productId);
 }
 
+//////Closing by pressing escape
+window.addEventListener('keydown', keyEsc);
 function keyEsc(event) {
    if (event.code === ESCAPE) {
-      console.log('Escape');
+      console.log('Escape'); 
+      };
    }
-}
 
 // const btnOne = document.querySelector('.js_btn_01');
 // console.log(btnOne);
@@ -101,6 +120,18 @@ function keyEsc(event) {
 
 // const allFavorites = JSON.parse(localStorage.getItem(KEY_FAVORITE));
 // console.log(allFavorites);
+
+
+// console.log('a');
+
+// const arr01 = instruments.filter(({ id }) => id !== 1);
+// console.log(arr01);
+
+// instruments.splice(0, 1);
+// console.log(instruments);
+
+
+
 
 
 
