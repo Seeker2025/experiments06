@@ -1,4 +1,4 @@
-
+export { instruments };
 
 const instruments = [
      {
@@ -63,4 +63,3 @@ const instruments = [
     },  
 ];
 
-export { instruments };

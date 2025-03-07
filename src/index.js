@@ -5,6 +5,7 @@ import { common } from './js/common';
 import { instruments } from './js/inst';
 import { createMarkup } from './js/markUp';
 
+
 export { onClick };
 
 const { KEY_FAVORITE, KEY_BASKET, ESCAPE, list } = common;

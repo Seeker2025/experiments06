@@ -1,5 +1,7 @@
 // console.log('w');
-// console.log('w');
+console.log('w');
+
+
 
 const form = document.querySelector(".feedback-form");
 const localStorageKey = "goit-example-message";
@@ -15,3 +17,8 @@ form.addEventListener("submit", (evt) => {
   localStorage.removeItem(localStorageKey);
   form.reset();
 });
+
+// import { isObject02 } from './forma';
+// console.log(isObject02);
+
+// console.log(a);

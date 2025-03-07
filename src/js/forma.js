@@ -1,5 +1,7 @@
 import throttle from 'lodash.throttle'
 
+
+
 const STORAGE_KEY = 'feedback-msg'
 
 const refs = {
@@ -36,3 +38,15 @@ function populateTextarea() {
     }
     
 }
+
+const isObject02 = {
+    name: 'Грицько',
+    girl: 'Марічка',
+    age: 25,
+ 
+};
+// export { isObject02 }
+// console.log(isObject02);
+const a = "Petro";
+
+console.log(a);
